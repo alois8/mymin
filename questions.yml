@@ -1,0 +1,31 @@
+questions:
+# General
+- variable: clusterDomain
+  label: Cluster Domain
+  description: "The Domain for your Cluster"
+  default: "cluster.local"
+  group: General
+#image
+- variable: defaultImage
+  default: true
+  description: "Use default minio image or specify a custom one"
+  label: Use Default Minio Image
+  type: boolean
+  show_subquestion_if: false
+  group: "Container Image"
+  subquestions:
+    - variable: image.repository
+      default: "minio/minio"
+      description: "Minio Image Name"
+      type: string
+      label: Minio Image Name
+    - variable: image.tag
+      default: "RELEASE.2020-12-03T05-49-24Z"
+      description: "Minio Image Tag"
+      type: string
+      label: Minio Image Tag
+    - variable: image.pullPolicy
+      default: "IfNotPresent"
+      description: "Minio Image Pull Policy"
+      type: string
+      label: Minio Image Pull Policy
